@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Shopping List Check Off</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+      .emptyMessage {
+        font-weight: bold;
+        color: white;
+    
+      }
+      li {
+        margin-bottom: 20px;
+        font-size: 1.2em;
+        
+        padding:1rem;
+        border-radius: 10px;
+        
+      }
+      li:hover{
+        transform: scale(1.05);
+        background-color: rgb(206, 89, 0);
+      }
+      li > button {
+        
+        margin-right: 30px;
+        margin-left: 20px;
+      }
+      button > i {
+        color: black;
+      }
+      button:hover {
+        transform:scale(1.1) !important;
+      }
+      
+
+      .tobuy{
+        background-color: rgb(255, 102, 0);
+        color: white;
+        border-radius: 30px;
+        margin:2rem;
+        padding:2rem;
+      }
+
+      .bought{
+        background-color: rgb(23, 175, 0);
+        color: white;
+        border-radius: 30px;
+        margin:2rem;
+        padding:2rem;
+      }
+
+     
+    </style>
+  </head>
+  
+
+<body ng-app="ShoppingListCheckOff">
+  <div class="container">
+  <h1>Shopping List Check Off</h1>
+   
+  <div class="row">
+
+    <!-- To Buy List -->
+    <div class="col-md-4 tobuy" ng-controller="ToBuyController as tb">
+      <h2>To buy</h2>
+     <ol>
+      <li  ng-repeat="item in toBuy">
+        <button ng-click="tb.addRemove(item.quantity,item.name,$index);" class="btn" ><i class="fa fa-trash"></i></button>
+        {{ item.quantity }} of {{ item.name }}
+          
+         
+      </li>
+    </ol>
+     <!-- <ul>
+       <li>Buy 10 cookies <button class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Bought</button></li>
+       <li>Buy 10 cookies <button class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Bought</button></li>
+     </ul> -->
+      <div ng-if="!toBuy.length" class="emptyMessage">Everything is bought!</div> 
+      
+      
+     <!-- <div class="emptyMessage">Everything is bought!</div> -->
+    </div>
+
+    <!-- Already Bought List -->
+    <div class="col-md-4 bought" ng-controller="AlreadyBoughtController as ab">
+     <h2>Already Bought:</h2>
+     <ul>
+      <li ng-repeat="item in bought">
+        {{ item.name }} of {{ item.quantity }}
+         
+      </li>
+    </ul>
+     <div ng-if="!bought.length" class="emptyMessage">Nothing bought yet.</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
