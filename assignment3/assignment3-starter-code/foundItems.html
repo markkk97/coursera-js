@@ -1,0 +1,18 @@
+<div>
+<h1>Menu</h1>
+<p ng-if="menu.categories.length == 0">No items found</p>
+<ol>
+  <li ng-repeat="category in menu.categories track by $index" class="mb-4">
+    
+    {{category.short_name}}
+    - 
+    {{category.name}}
+    -
+    {{category.description}}
+    <button ng-click="menu.onRemove({index: $index});">Don't want this one</button> 
+   
+  </li>
+</ol>
+
+</div>
+ 
