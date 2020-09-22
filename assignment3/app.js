@@ -19,7 +19,7 @@
         title: '@',
         onRemove:'&'
       },
-      controller: foundItemsDirectiveController,
+      controller: NarrowItDownController,
       controllerAs: 'menu',
       bindToController: true
     };
@@ -30,20 +30,7 @@
   
 
 
-  function foundItemsDirectiveController() {
-    var list = this;
   
-    list.itemsInList = function (input) {
-      for (var i = 0; i < list.items.length; i++) {
-        var name = list.items[i].name;
-        if (name.toLowerCase().indexOf(input) !== -1) {
-          return true;
-        }
-      }
-  
-      return false;
-    };
-  }
 
 
  NarrowItDownController.$inject = ['$scope','MenuSearchService'];
